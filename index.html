@@ -1,0 +1,71 @@
+<html>
+
+<head>
+    <title>router</title>
+    <meta charset="utf-8" />
+    <style type="text/css">
+        .header{
+            width:100%;
+            display: inline-block;
+            height: 30px;
+        }
+        .header ul{
+            display: block;
+            margin: 10px auto 5px;
+            height: 30px;
+            width:500px;
+        }
+        .header li{
+            list-style-type: none;
+            float: left;
+            margin-left: 20px;
+            display: block;
+        }
+        .header ul:after{
+            clear: both;
+        }
+
+    </style>
+</head>
+    <body>
+    <div class="header">
+        <ul>
+            <li><a href="#/route1">router1</a></li>
+            <li><a href="#/route2">router2</a></li>
+            <li><a href="#/route3">router3</a></li>
+            <li><a href="#/route4">error</a></li>
+        </ul>
+    </div>
+
+    <div class="content" id="loadCtx">
+
+
+    </div>
+
+    <script src="router.js" type="text/javascript"></script>
+    <script src="jquery.min.js" type="text/javascript"></script>
+    <script>
+
+        $(function(){
+            //创建路由
+            var router = new Router();
+            router.route('/route1',function(){
+                $('#loadCtx').empty().html('router1 loaded');
+            })
+
+            router.route('/route2',function(){
+                $('#loadCtx').empty().html('router2 loaded');
+            })
+
+            router.route('/route3',function(){
+                $('#loadCtx').empty().html('router3 loaded');
+            })
+            router.routeError(function(){
+                $('#loadCtx').empty().html('error msg loaded');
+            });
+            router.init();
+
+        });
+    </script>
+    </body>
+</html>
